@@ -28,6 +28,6 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 
 ## Getting started
-git clone
-npm i 
-cp .env.sample .env
+git clone<br/>
+npm i <br/>
+cp .env.sample .env<br/>
