@@ -1,0 +1,36 @@
+[{
+    "imgUrl":"https://www.onceuponachef.com/images/2017/05/chicken-quinoa-bowl-760x547.jpg",
+    "name":"Mexican Burrito Bowl",
+    "price":100,
+    "id":1
+
+    },
+    {
+        "imgUrl":"https://www.onceuponachef.com/images/2017/05/chicken-quinoa-bowl-760x547.jpg",
+        "name":"White Sauce Pasta",
+        "price":200,
+        "id":2
+    
+        },
+        {
+            "imgUrl":"https://www.onceuponachef.com/images/2017/05/chicken-quinoa-bowl-760x547.jpg",
+            "name":"Panner Tikka",
+            "price":300,
+            "id":3
+        
+            },
+            {
+                "imgUrl":"https://www.onceuponachef.com/images/2017/05/chicken-quinoa-bowl-760x547.jpg",
+                "name":"Pizza",
+                "price":400,
+                "id":4
+            
+                },
+                {
+                    "imgUrl":"https://www.onceuponachef.com/images/2017/05/chicken-quinoa-bowl-760x547.jpg",
+                    "name":"Cake",
+                    "price":500,
+                    "id":5
+                
+                    }
+]
