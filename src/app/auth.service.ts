@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { of, Subject, throwError } from 'rxjs';
+import { of, Subject, throwError, EMPTY } from 'rxjs';
 import { switchMap, catchError } from 'rxjs/operators';
 import { User } from './user';
 import {  HttpClient } from '@angular/common/http';
@@ -69,16 +69,15 @@ export class AuthService {
   findMe(){
     const token = this.tokenStorage.getToken();
     if(!token){
-      return;
+      return EMPTY;
     }
 
     return this.httpClient.get<any>(`${this.apiUrl}findme`)
     .pipe(
-      switchMap(
-        foundUser=>{
-          this.setUser(foundUser);
-          console.log(`user found`, foundUser);
-          return of(foundUser);
+      switchMap(({user})=>{
+          this.setUser(user);
+          console.log(`user found`, user);
+          return of(user);
         }
       ),
       catchError(e=>{
