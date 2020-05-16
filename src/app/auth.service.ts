@@ -5,6 +5,12 @@ import { User } from './user';
 import {  HttpClient } from '@angular/common/http';
 import { TokenStorageService } from './token-storage.service';
 
+interface userDto{
+  user:User;
+  token:string;
+}
+
+
 @Injectable({
   providedIn: 'root'
 })
@@ -23,12 +29,14 @@ export class AuthService {
     console.log('Credentials:',loginCredentials);
 
 
-    return this.httpClient.post<User>(`${this.apiUrl}login`,loginCredentials).pipe(
-      switchMap(
-        foundUser=>{
-          this.setUser(foundUser);
-          console.log(`user found`, foundUser);
-          return of(foundUser);
+    return this.httpClient
+    .post<userDto>(`${this.apiUrl}login`,loginCredentials)
+    .pipe(
+      switchMap(({user,token})=>{
+          this.setUser(user);
+          this.tokenStorage.setToken(token);
+          console.log(`user found`, user);
+          return of(user);
         }
       ),
       catchError(e=>{
@@ -53,7 +61,8 @@ export class AuthService {
 
   register(userToSave :any) {  
 
-    return this.httpClient.post<any>(`${this.apiUrl}register`,userToSave).pipe
+    return this.httpClient.post<any>(`${this.apiUrl}register`,userToSave)
+    .pipe
     (//happy path 
       switchMap(({user, token})=>{
         this.setUser(user);

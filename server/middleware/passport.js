@@ -22,9 +22,6 @@ const localLogin = new LocalStrategy(
 
     }
 );
-
-
-
 const jwtLogin = new JwtStrategy(
     {
         jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(),
