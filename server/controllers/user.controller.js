@@ -1,5 +1,8 @@
 const User = require('../models/user.model');
 const bcrypt = require('bcrypt')
+
+
+
 async function insert(user){
     
     user.hashedPassword = bcrypt.hashSync(user.password,10);
@@ -22,6 +25,8 @@ async function getUserByEmailIdAndPassword(email, password){
         return null;
     }
 }
+
+
 
 async function getUserById(id){
     let user = await User.findById(id);

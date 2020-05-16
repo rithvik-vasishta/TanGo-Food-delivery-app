@@ -21,11 +21,10 @@ async function insert(req,res,next){
 async function getUserByEmailIdAndPassword(req, res, next){
     const user = req.body;
     console.log(`searching user for `, user);
-
     req.user = await userController.getUserByEmailIdAndPassword(user.email,user.password);
-
     next();
 }
+
 
 function login(req, res) {
     const user = req.user;

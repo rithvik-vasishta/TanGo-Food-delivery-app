@@ -5,7 +5,7 @@ const ExtractJWT = require('passport-jwt').ExtractJwt;
 
 
 const config = require('../config/config');
-const userControler = require('../controllers/user.controller');
+const userController = require('../controllers/user.controller');
 
 
 const localLogin = new LocalStrategy(
@@ -13,11 +13,11 @@ const localLogin = new LocalStrategy(
         usernameField: 'email'
     },
     async (email, password, done)=>{
-        const user = userControler.getUserByEmailIdAndPassword(email,password);
+        const user = userController.getUserByEmailIdAndPassword(email,password);
         return user
         ?done(null,user)
         :done(null,false,{
-            error:'Your login cred is not valid. Tyr again'
+            error:'Your login cred is not valid. Try again'
         });
 
     }
@@ -32,7 +32,7 @@ const jwtLogin = new JwtStrategy(
 
     },
     async (payload, done) =>{
-        const user = await userControler.getUserById(payload._id);
+        const user = await userController.getUserById(payload._id);
         return user
         ?done(null,user)
         :done(null,false,{
