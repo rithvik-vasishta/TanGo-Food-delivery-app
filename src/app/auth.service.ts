@@ -3,6 +3,7 @@ import { of, Subject, throwError } from 'rxjs';
 import { switchMap, catchError } from 'rxjs/operators';
 import { User } from './user';
 import {  HttpClient } from '@angular/common/http';
+import { TokenStorageService } from './token-storage.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,11 @@ export class AuthService {
   private apiUrl='/api/auth/';
   
 
-  constructor(private httpClient:HttpClient) { }
+  constructor(
+    private httpClient:HttpClient,
+    private tokenStorage : TokenStorageService
+    ) 
+  { }
   login(email: string, password: string) {
     const loginCredentials = {email,password};
     console.log('Credentials:',loginCredentials);
@@ -43,18 +48,15 @@ export class AuthService {
    return this.user$.asObservable();
  }
 
-  register(user :any) {
-    
-    //this.setUser(user);
-    //console.log('regestered user successfully',user);
-    //return of(user);
+  register(userToSave :any) {  
 
-    return this.httpClient.post<User>(`${this.apiUrl}register`,user).pipe
+    return this.httpClient.post<any>(`${this.apiUrl}register`,userToSave).pipe
     (//happy path 
-      switchMap(savedUser=>{
-        this.setUser(savedUser);
-        console.log(`user registered successfully`, savedUser);
-        return of(savedUser);
+      switchMap(({user, token})=>{
+        this.setUser(user);
+        this.tokenStorage.setToken(token);
+        console.log(`user registered successfully`, user);
+        return of(user);
       }),
       catchError(e=>{
         console.log(`server error occured`,e);
@@ -62,6 +64,29 @@ export class AuthService {
       })
     );
   }
+
+
+  /*findMe(){
+    const token = this.tokenStorage.getToken();
+    if(!token){
+      return;
+    }
+
+    return this.httpClient.post<User>(`${this.apiUrl}findme`).pipe(
+      switchMap(
+        foundUser=>{
+          this.setUser(foundUser);
+          console.log(`user found`, foundUser);
+          return of(foundUser);
+        }
+      ),
+      catchError(e=>{
+        console.log(`Your login cred could not be verified.`, e);
+        return throwError(`Your login cred could not be verified.`);
+      })
+    );
+  }*/
+
   private setUser(user){
     this.user$.next(user);
   }
