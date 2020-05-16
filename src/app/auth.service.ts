@@ -39,7 +39,10 @@ export class AuthService {
   }
 
   logout(){
+    //remove user
+    //remove token from localstorage
     this.setUser(null);
+    this.tokenStorage.removeToken();
     console.log('user has been ogged out');
   }
 
