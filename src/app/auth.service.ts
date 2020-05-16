@@ -66,13 +66,14 @@ export class AuthService {
   }
 
 
-  /*findMe(){
+  findMe(){
     const token = this.tokenStorage.getToken();
     if(!token){
       return;
     }
 
-    return this.httpClient.post<User>(`${this.apiUrl}findme`).pipe(
+    return this.httpClient.get<any>(`${this.apiUrl}findme`)
+    .pipe(
       switchMap(
         foundUser=>{
           this.setUser(foundUser);
@@ -85,7 +86,7 @@ export class AuthService {
         return throwError(`Your login cred could not be verified.`);
       })
     );
-  }*/
+  }
 
   private setUser(user){
     this.user$.next(user);

@@ -13,9 +13,11 @@ export class AppComponent implements OnDestroy{
   
   user:User
   userSubsciption:Subscription
-  constructor(private authService:AuthService,private router: Router){ 
+  constructor(private authService:AuthService,private router: Router){     
     
-    this.authService.user.subscribe(user=>(this.user=user));
+    this.authService.findMe().subscribe(user => ( this.user = user)); 
+
+    this.userSubsciption = this.authService.user.subscribe(user=>(this.user=user));
 
   }
   logout(){

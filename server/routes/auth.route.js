@@ -3,13 +3,14 @@ const bcrypt = require('bcrypt');
 const userController = require('../controllers/user.controller');
 const asyncHandler = require('express-async-handler');
 const authController = require('../controllers/auth.controller');
-
+const passport = require('../middleware/passport');
 const router = express.Router();
 
 
 //localhost:4050/api/auth/register
 router.post('/register',asyncHandler(insert), login);
 router.post('/login',asyncHandler(getUserByEmailIdAndPassword), login);
+router.get('/findme', passport.authenticate("jwt",{ session : false }), login);
 
 async function insert(req,res,next){
     const user = req.body;
