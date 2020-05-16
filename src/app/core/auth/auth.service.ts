@@ -4,6 +4,7 @@ import { switchMap, catchError } from 'rxjs/operators';
 import { User } from '../user';
 import {  HttpClient } from '@angular/common/http';
 import { TokenStorageService } from './token-storage.service';
+import { LogService } from '@core/log.service';
 
 interface userDto{
   user:User;
@@ -21,7 +22,8 @@ export class AuthService {
 
   constructor(
     private httpClient:HttpClient,
-    private tokenStorage : TokenStorageService
+    private tokenStorage : TokenStorageService,
+    private logService : LogService
     ) 
   { }
   login(email: string, password: string) {
@@ -40,7 +42,7 @@ export class AuthService {
         }
       ),
       catchError(e=>{
-        console.log(`Your login cred could not be verified.`, e);
+        this.logService.log(`Server error occured:  ${e.error.message} `,e);
         return throwError(`Your login cred could not be verified.`);
       })
     );
