@@ -29,5 +29,9 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## Getting started
 git clone<br/>
-npm i <br/>
+npm i (To get all dependencies by node_modules) <br/>
 cp .env.sample .env<br/>
+Start mongo server First<br/>
+"npm run build:prod" in one terminal<br/>
+"npm run server:watch" in othr terminal<br/>
+
