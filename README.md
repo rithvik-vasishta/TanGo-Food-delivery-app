@@ -32,7 +32,7 @@ git clone<br/>
 npm i (To get all dependencies by node_modules) <br/>
 cp .env.sample .env<br/>
 Start mongo server First<br/>
-"npm run build:prod" in one terminal<br/>
-"npm run server:watch" in othr terminal<br/>
-"ng build --watch" for watchmode in client side<br/>
+"npm run serve:client" in one terminal<br/>
+"npm run server:watch" in other terminal<br/>
+
 
