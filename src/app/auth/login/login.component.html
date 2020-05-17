@@ -6,17 +6,17 @@
     </mat-card-header>
     <mat-card-content>
         <form>
-            <table cellspacing=0>
+            <table cellspacing=0 class="full-width">
                 <tr>
                     <td>
-                        <mat-form-field>
+                        <mat-form-field class="full-width">
                             <input name="email" [(ngModel)] = "email" matInput placeholder="Email" required type="email" />
                         </mat-form-field>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <mat-form-field>
+                        <mat-form-field class="full-width">
                             <input name="password" [(ngModel)] = "password" matInput placeholder="Password" required type="password" />
                         </mat-form-field>
                     </td>
@@ -34,11 +34,14 @@
         </form>
     </mat-card-content>
 <mat-card-actions>
-    <button mat-raised-button color="primary" (click)="login()">Login</button>
-    <span>
-        Dont have an account?
-        <a [routerLink] = "['/auth/register']">register</a> here
-    </span>
+    <button class="full-width" mat-raised-button color="primary" (click)="login()">Login</button>
+    <div style="margin-top:2em">
+        <span >
+            New to TanGo?
+            <a [routerLink] = "['/auth/register']">sign up</a> here
+        </span>
+    </div>
+    
 
 </mat-card-actions>
 </mat-card>

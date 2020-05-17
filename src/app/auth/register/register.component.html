@@ -44,7 +44,10 @@
         </form>
     </mat-card-content>
     <mat-card-actions>
-        <button mat-raised-button color="primary" (click)="register()">Register</button>
-        <span class="left-spacer">ALready registered?<a [routerLink]='["/auth"]'>Login</a> Here</span>
+        <button class="full-width" mat-raised-button color="primary" (click)="register()">Register</button>
+        <div style="margin-top: 2em">
+            <span class="left-spacer">Already registered with us?<a [routerLink]='["/auth"]'>Login</a> Here</span>
+        </div>
+        
     </mat-card-actions>
 </mat-card>>
