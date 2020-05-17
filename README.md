@@ -32,7 +32,7 @@ git clone<br/>
 npm i (To get all dependencies by node_modules) <br/>
 cp .env.sample .env<br/>
 Start mongo server First<br/>
-"npm run serve:client" in one terminal<br/>
-"npm run server:watch" in other terminal<br/>
+"npm run client" in one terminal<br/>
+"npm run server" in other terminal<br/>
 
 
