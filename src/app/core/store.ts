@@ -1,4 +1,5 @@
 import { Observable, BehaviorSubject } from 'rxjs';
+import { distinctUntilChanged, map } from 'rxjs/operators';
 
 
 export class Store<T>{
@@ -9,6 +10,12 @@ export class Store<T>{
         this._state$ = new BehaviorSubject<T>(initialState);
         this.state$ = this._state$.asObservable();
     }
+
+    select<T>(selectorFunction: any): Observable<T> {
+        return this.state$.pipe(
+          distinctUntilChanged(),
+          map(selectorFunction));
+      }
 
     //sync
     get state(){

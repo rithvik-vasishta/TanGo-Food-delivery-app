@@ -4,6 +4,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Product } from '@core/products/product';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
+import { CartService } from '@core/cart/cart.service';
 
 @Component({
   selector: 'sw-products',
@@ -20,7 +21,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
 
-  constructor(private productDataService: ProductDataService) { }
+  constructor(private productDataService: ProductDataService, private cartService: CartService ) { }
   ngOnDestroy(): void {
     this.subscriptions.forEach(s => s.unsubscribe());
   }
@@ -37,6 +38,10 @@ export class ProductsComponent implements OnInit, OnDestroy {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
+
+  addItemToCart(product){
+    this.cartService.addToCart(product, 2);
+  }
 
   onDataLoad(products){
     this.loading = false;

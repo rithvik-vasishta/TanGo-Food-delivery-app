@@ -5,10 +5,11 @@ import { SharedRoutingModule } from './shared-routing.module';
 import { RouterModule } from '@angular/router';
 import { SwigMaterialModule } from './material-module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CartItemsCountComponent } from './cart/cart-items-count/cart-items-count.component';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [CartItemsCountComponent],
   imports: [
     CommonModule,
     SharedRoutingModule,
@@ -21,6 +22,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule,
     RouterModule,
     FlexLayoutModule,
+    CartItemsCountComponent
   ]
 })
 export class SharedModule { }

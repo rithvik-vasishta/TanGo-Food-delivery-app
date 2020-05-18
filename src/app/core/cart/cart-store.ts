@@ -36,7 +36,7 @@ export class CartStore extends Store<CartState> {
         console.log('[cart] remove cartItem');
         const newState = {
             ...this.state,   //cartItems
-            cartItems: this.state.cartItems.filter(cartItem=> cartItem.productId != cartItemToRemove.productId)
+            cartItems: this.state.cartItems.filter(cartItem=> cartItem.id != cartItemToRemove.id)
             
         };
 
@@ -48,7 +48,7 @@ export class CartStore extends Store<CartState> {
         const newState = {
             ...this.state,   //cartItems
             cartItems: this.state.cartItems.map(cartItem=> 
-                cartItem.productId == cartItemToUpdate.productId 
+                cartItem.id == cartItemToUpdate.id 
                 ? cartItemToUpdate
                 : cartItem)
             

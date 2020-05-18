@@ -24,7 +24,7 @@ describe('CartStore', () => {
     expect(currentState.cartItems.length).toBe(0);
 
     const cartItem: CartItem = {
-      productId:1,
+      id:1,
       imgUrl:'img/apple',
       price:2,
       quantity:10,
@@ -44,7 +44,7 @@ describe('CartStore', () => {
 
   it('can clear cart ',()=>{
       const cartItem: CartItem = {
-      productId:1,
+      id:1,
       imgUrl:'img/apple',
       price:2,
       quantity:10,
@@ -75,7 +75,7 @@ describe('CartStore', () => {
 
     expect(cartStore.state).toEqual(currentState);
     const cartItem: CartItem = {
-      productId:1,
+      id:1,
       imgUrl:'img/apple',
       price:2,
       quantity:10,
@@ -96,7 +96,7 @@ describe('CartStore', () => {
 it('can remove cart ',()=>{
 
   const cartItem: CartItem = {
-    productId:2,
+    id:2,
     imgUrl:'img/apple',
     price:2,
     quantity:10,
@@ -105,7 +105,7 @@ it('can remove cart ',()=>{
   };
 
   const cartItem1: CartItem = {
-    productId:1,
+    id:1,
     imgUrl:'img/orange',
     price:20,
     quantity:100,
@@ -134,7 +134,7 @@ it('can remove cart ',()=>{
 it('can update cart ',()=>{
 
   const cartItem: CartItem = {
-    productId:1,
+    id:1,
     imgUrl:'img/apple',
     price:2,
     quantity:10,
@@ -143,7 +143,7 @@ it('can update cart ',()=>{
   };
 
   const cartItem1: CartItem = {
-    productId:2,
+    id:2,
     imgUrl:'img/orange',
     price:20,
     quantity:100,
@@ -159,7 +159,7 @@ it('can update cart ',()=>{
   expect(cartStore.state).toEqual(currentState);
 
   const cartItemToUpdate: CartItem = {
-    productId:2,
+    id:2,
     imgUrl:'img/orange',
     price:20,
     quantity:110,
