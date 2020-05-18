@@ -4,6 +4,11 @@ import { Product } from "@core/products/product";
 import { of } from "rxjs";
 import { CartStore } from "./cart-store";
 
+export const ALLOWED_PRODUCT_QUANTITIES = Array.from(
+  { length: 30 },
+  (v, i) => i + 1
+);
+
 @Injectable({
   providedIn: "root",
 })
