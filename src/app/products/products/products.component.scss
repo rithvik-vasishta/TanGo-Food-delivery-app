@@ -1,33 +1,33 @@
 .example-card {
   max-width: 400px;
-  margin: 15px;
-}
-
-.full-width {
-  width: 100%;
 }
 
 .example-header-image {
+  
   background-size: cover;
 }
 
-.mat-table {
-  box-shadow: none;
-  width: 100%;
+.full-width{
+  width:100%;
 }
 
-.product-listing-image {
+.mat-table{
+  box-shadow: none;
+  width:100%;
+}
+
+.product-listing-image{
   height: 18em;
   width: 18em;
 }
 
-@media all and (max-width: 699px) {
-  .product-listing-image {
-    height: 10em;
-    width: 10em;
+@media all and (max-width:699px){
+  .product-listing-image{
+    height: 9em;
+    width: 9em;
   }
 }
 
-.mat-spinner {
-  margin: 10% auto;
+.mat-spinner{
+  margin:10% auto;
 }
