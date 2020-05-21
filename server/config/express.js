@@ -37,8 +37,8 @@ app.use(cors());
 //authenticate
 app.use(passport.initialize());
 
-//api routes
-app.use('/api',routes);
+//api routes---added / at th end of api
+app.use('/api/',routes);
 
 //serve index.html
 app.get('*',(req,res)=>res.sendFile(path.join(distDir,'index.html')));
